@@ -88,8 +88,8 @@ public class LoginTest {
         userPage.chooseDog();
         userPage.searchField.clear();
         userPage.SearchDog("dog");
-        Assert.assertEquals(driver.findElement(By.cssSelector("div.item-word-translate > b")).getText(),"dog");
-        Assert.assertEquals(driver.findElement(By.cssSelector("span.translates.t-ellps")).getText(),"собака");
+        sleep(2);
+        Assert.assertEquals(driver.findElement(By.cssSelector("[data-show-word-card-popup]")).getText(),"dog  —  собака");
 
     }
 

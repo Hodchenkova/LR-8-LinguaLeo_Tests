@@ -12,15 +12,15 @@ public class LoginPage {
     }
 
     public WebDriver driver;
-   @FindBy (css = "#headEnterBtn")
+   @FindBy (css = "[id='headEnterBtn']")
     public WebElement enterButton;
-    @FindBy(css = "#loginForm > div > div:nth-child(1) > input")
+    @FindBy(css = "input[name='r_email']")
     public WebElement emailField;
     @FindBy(id = "registerFormEmail")
     public WebElement emailField1;
     @FindBy(id = "registerFormPassword")
     public WebElement passwordField1;
-    @FindBy(css = "#loginForm > div > div:nth-child(2) > input")
+    @FindBy(css = "input[name='password']")
     public WebElement passwordField;
 
     @FindBy(xpath= "//*[@id=\"loginForm\"]/button")

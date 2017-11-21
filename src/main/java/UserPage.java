@@ -14,11 +14,11 @@ public class UserPage {
 
     @FindBy(className = "iconmenu-journal")
     public WebElement myProgressMenu;
-    @FindBy(css = "a.b-dict-link.b-header__dict" )
+    @FindBy(css = "[class='b-dict-link b-header__dict']" )
     public WebElement dictionary;
-    @FindBy(xpath = "//*[@id=\"glossaryPage\"]/div[3]/div[2]/div[1]/div[2]/div/div/form/input")
+    @FindBy(xpath = "//*[@placeholder='Найти']")
     public WebElement searchField;
-    @FindBy(xpath = "//*[@id=\"glossaryPage\"]/div[3]/div[2]/div[1]/div[2]/div/div/form/button")
+    @FindBy(css = "button[type='submit'][class='btn find-word']")
     public WebElement addButton;
     @FindBy (css = "body > div:nth-child(33) > div > div.simple-dialog__popup > div > div.simple-dialog__header > span")
     public WebElement closeAllert;

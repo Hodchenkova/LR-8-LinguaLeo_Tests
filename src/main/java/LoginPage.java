@@ -12,18 +12,18 @@ public class LoginPage {
     }
 
     public WebDriver driver;
-   @FindBy (css = "[id='headEnterBtn']")
-    public WebElement enterButton;
-    @FindBy(css = "[class='input-auth uauth-email__input-email'][name='email']")
+   @FindBy (xpath = "//*[@id='headEnterBtn']")
+    public WebElement loginButton;
+    @FindBy(xpath = "//form[@id='loginForm']//child::*[@name='email']")
     public WebElement emailField;
     @FindBy(id = "registerFormEmail")
     public WebElement emailField1;
     @FindBy(id = "registerFormPassword")
     public WebElement passwordField1;
-    @FindBy(css = "[class='input-auth uauth-email__input-pass'][name='password']")
+    @FindBy(xpath = "//form[@id='loginForm']//child::*[@name='password']")
     public WebElement passwordField;
 
-    @FindBy(xpath= "//*[@id='loginForm']")
+    @FindBy(xpath= "//*[@id='loginForm']/child::*[contains(text(),'Войти')]")
     public WebElement submitButton;
     @FindBy(id = "registerFormBtn")
     public WebElement submitButton1;
@@ -31,7 +31,7 @@ public class LoginPage {
     public WebElement errorMessage;
 
     public void enterButton(){
-        enterButton.click();
+        loginButton.click();
     }
 
     public void inputEmail (String email) {

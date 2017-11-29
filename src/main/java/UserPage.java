@@ -20,7 +20,7 @@ public class UserPage {
     public WebElement searchField;
     @FindBy(css = "button[type='submit'][class='btn find-word']")
     public WebElement addButton;
-    @FindBy (css = "a.transword__text.t-ellps") 
+    @FindBy (css = "a.transword__text.t-ellps")
     public WebElement chooseDog;
 
     public void myProgressMenu(){

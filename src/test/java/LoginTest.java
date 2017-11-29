@@ -57,6 +57,7 @@ public class LoginTest {
         loginPage.inputEmail("hodchenkova.a@gmail.com");
         loginPage.inputPassword("1234777");
         loginPage.clickSubmitButton();
+        sleep(2);
         Assert.assertEquals(driver.findElement(By.cssSelector("p.uauth-email__error.t-ellps")).getText(),"Пароль/email введены неверно");
     }
 
@@ -80,9 +81,9 @@ public class LoginTest {
 
     }
 
-    @AfterClass
-    public void driverClose(){
-        driver.quit();
-    }
+//    @AfterClass
+//    public void driverClose(){
+//        driver.quit();
+//    }
 }
 

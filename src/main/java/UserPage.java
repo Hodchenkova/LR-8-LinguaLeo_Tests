@@ -20,9 +20,7 @@ public class UserPage {
     public WebElement searchField;
     @FindBy(css = "button[type='submit'][class='btn find-word']")
     public WebElement addButton;
-    @FindBy (css = "body > div:nth-child(33) > div > div.simple-dialog__popup > div > div.simple-dialog__header > span")
-    public WebElement closeAllert;
-    @FindBy (css = "div.transmenu__content > div:nth-of-type(2) > a.transword__text.t-ellps")
+    @FindBy (css = "a.transword__text.t-ellps") 
     public WebElement chooseDog;
 
     public void myProgressMenu(){
@@ -38,9 +36,6 @@ public class UserPage {
     }
     public void addWord(){
     addButton.click();
-    }
-    public void CloseAllert(){
-       closeAllert.click();
     }
     public void chooseDog(){
         chooseDog.click();

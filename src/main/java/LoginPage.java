@@ -14,16 +14,16 @@ public class LoginPage {
     public WebDriver driver;
    @FindBy (css = "[id='headEnterBtn']")
     public WebElement enterButton;
-    @FindBy(css = "input[name='r_email']")
+    @FindBy(css = "[class='input-auth uauth-email__input-email'][name='email']")
     public WebElement emailField;
     @FindBy(id = "registerFormEmail")
     public WebElement emailField1;
     @FindBy(id = "registerFormPassword")
     public WebElement passwordField1;
-    @FindBy(css = "input[name='password']")
+    @FindBy(css = "[class='input-auth uauth-email__input-pass'][name='password']")
     public WebElement passwordField;
 
-    @FindBy(xpath= "//*[@id=\"loginForm\"]/button")
+    @FindBy(xpath= "//*[@id='loginForm']")
     public WebElement submitButton;
     @FindBy(id = "registerFormBtn")
     public WebElement submitButton1;

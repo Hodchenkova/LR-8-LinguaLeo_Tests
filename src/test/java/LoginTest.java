@@ -22,7 +22,7 @@ public class LoginTest {
     public static UserPage userPage;
     @BeforeClass
     public static void setup() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/usr/local/share/chromedriver");
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         userPage = new UserPage(driver);
@@ -30,15 +30,6 @@ public class LoginTest {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("https://lingualeo.com/ru#welcome");
 
-    }
-
-    public static boolean checkIfElementExists(String selector) {
-        try {
-            driver.findElement(By.xpath(selector));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public static void sleep(int time) {
@@ -66,30 +57,26 @@ public class LoginTest {
         loginPage.inputEmail("hodchenkova.a@gmail.com");
         loginPage.inputPassword("1234777");
         loginPage.clickSubmitButton();
-        Assert.assertEquals(driver.findElement(By.cssSelector("body > div.simple-dialog.simple-dialog_is_shaking > div.simple-dialog__popup > div > div.simple-dialog__content > div > div.uauth-f__slider > div > div.uauth-f__login.uauth-form__email-auth_state_expanded.uauth-form__email-auth_state_error > div > div.uauth-email > div > p")).getText(),"Пароль/email введены неверно");
+        Assert.assertEquals(driver.findElement(By.cssSelector("p.uauth-email__error.t-ellps")).getText(),"Пароль/email введены неверно");
     }
 
     @Test (priority = 3, dependsOnMethods = {"successfullLoginToLinguaLeo"})
     public void navigateToMyProgressMenu(){
-        if (checkIfElementExists("body > div:nth-child(33) > div > div.simple-dialog__popup > div > div.simple-dialog__header > span")){
-            userPage.CloseAllert();
-        }else userPage.myProgressMenu();
-        Assert.assertEquals(driver.findElement(By.cssSelector("#content > div.journal-wp > div > div:nth-child(3) > div > div.journal-bl__head > div")).getText(),"Сытость Лео");
+        userPage.myProgressMenu();
+        Assert.assertEquals(driver.findElement(By.cssSelector("[class='journal-bl__head-item']")).getText(),"Сытость Лео");
 
     }
     @Test (priority = 4, dependsOnMethods = {"successfullLoginToLinguaLeo"})
     public void addNewWordToDictionary(){
-        if (checkIfElementExists("body > div:nth-child(33) > div > div.simple-dialog__popup > div > div.simple-dialog__header > span")){
-            userPage.CloseAllert();
-        }
-        else userPage.dictionary();
-        userPage.SearchDog("dog");  // c этого момента не работает, не находит кнопку "Добавить"
+        userPage.dictionary();
+        userPage.SearchDog("dog");
         userPage.addWord();
         userPage.chooseDog();
         userPage.searchField.clear();
+        sleep(1);
         userPage.SearchDog("dog");
         sleep(2);
-        Assert.assertEquals(driver.findElement(By.cssSelector("[data-show-word-card-popup]")).getText(),"dog  —  собака");
+        Assert.assertEquals(driver.findElement(By.cssSelector("[data-show-word-card-popup]")).getText(),"dog  —  собака, собака");
 
     }
 
